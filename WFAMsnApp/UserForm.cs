@@ -18,7 +18,7 @@ namespace WFAMsnApp
             InitializeComponent();
         }
 
-        public string UserEmail { get; set; }
+        public string UserEmail { get; set; } // kullanıcı loginden'sonra email adresini tutar.
         private void btnGonder_Click(object sender, EventArgs e)
         {
             rtbMesajlar.Text += UserEmail + ": " + txtMsjGonder.Text + "\r\n";
