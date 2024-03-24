@@ -41,6 +41,8 @@
             label5 = new Label();
             txtAge = new TextBox();
             txtGender = new TextBox();
+            label6 = new Label();
+            txtUsername = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             // btnRegister
             // 
             btnRegister.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnRegister.Location = new Point(100, 518);
+            btnRegister.Location = new Point(100, 575);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(125, 48);
             btnRegister.TabIndex = 12;
@@ -124,7 +126,7 @@
             // 
             chkShowPassword.AutoSize = true;
             chkShowPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            chkShowPassword.Location = new Point(66, 479);
+            chkShowPassword.Location = new Point(66, 536);
             chkShowPassword.Name = "chkShowPassword";
             chkShowPassword.Size = new Size(112, 19);
             chkShowPassword.TabIndex = 17;
@@ -166,19 +168,38 @@
             txtGender.Size = new Size(198, 23);
             txtGender.TabIndex = 13;
             // 
-            // Form2
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label6.Location = new Point(66, 471);
+            label6.Name = "label6";
+            label6.Size = new Size(67, 15);
+            label6.TabIndex = 7;
+            label6.Text = "Username:";
+            // 
+            // txtUsername
+            // 
+            txtUsername.Location = new Point(65, 494);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(198, 23);
+            txtUsername.TabIndex = 13;
+            // 
+            // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(350, 638);
             Controls.Add(chkShowPassword);
             Controls.Add(pictureBox1);
+            Controls.Add(txtUsername);
             Controls.Add(txtGender);
             Controls.Add(txtAge);
             Controls.Add(txtPassword);
             Controls.Add(txtEmailAdress);
             Controls.Add(btnRegister);
             Controls.Add(lblLinkLogin);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -206,5 +227,7 @@
         private Label label5;
         private TextBox txtAge;
         private TextBox txtGender;
+        private Label label6;
+        private TextBox txtUsername;
     }
 }

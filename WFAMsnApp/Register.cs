@@ -29,39 +29,30 @@ namespace WFAMsnApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            
-
             try
             {
                 string eMailAdress = txtEmailAdress.Text.ToLower();
                 string password = txtPassword.Text;
                 int age = Convert.ToInt32(txtAge.Text);
                 string gender = txtGender.Text.ToLower();
+                string username = txtUsername.Text;
 
                 int etIsareti = eMailAdress.IndexOf("@");
                 string kullaniciAdi = eMailAdress.Substring(0, etIsareti); // @ işaretinden önceki kısım
                 string noktaVarMi = eMailAdress.Substring(etIsareti, eMailAdress.Length - kullaniciAdi.Length); // @ işaretindens sonraki kısım
 
                 if (!noktaVarMi.Contains(".")) // @ işaretinden sonra '.' karakteri yoksa
-                {
                     throw new ArgumentNullException();
-                }
                 else if (age < 0 || age > 150)
-                {
                     throw new OverflowException();
-                }
                 else if (gender != "erkek"  && gender != "kadın")
-                {
                     MessageBox.Show("Lütfen geçerli bir cinsiyet girin. ");
-                }
+                else if(username == "" || username.Length < 5 || username.Length > 20)
+                    MessageBox.Show("Username boş olamaz, 5 karakterden kısa, 20 karakterden uzun olamaz. ");
                 else
-                {
-                    UserRegister(eMailAdress, password, age, gender);
-                }
-
-                
-
+                    UserRegister(eMailAdress, password, age, gender, username);
             }
+
             catch (ArgumentNullException)
             {
                 MessageBox.Show("Lütfen geçerli bir Email adresi girin.");
@@ -104,12 +95,12 @@ namespace WFAMsnApp
 
         SqlConnection con = new SqlConnection(@"Data Source=IMEHMETC;Initial Catalog=MsnApp;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
 
-        void UserRegister(string eMailAdress, string password, int age, string gender)
+        void UserRegister(string eMailAdress, string password, int age, string gender, string username)
         {
             try
             {
                 con.Open();
-                string query = "INSERT INTO Users (email, password, age, gender) VALUES ('" + eMailAdress + "', '" + password + "', '" + age.ToString() + "', '" + gender + "')";
+                string query = "INSERT INTO Users (email, password, age, gender, username) VALUES ('" + eMailAdress + "', '" + password + "', '" + age.ToString() + "', '" + gender + "', '" + username + "')";
                 SqlCommand cmd = new SqlCommand(query, con); // Veritabanına veri göndermek, silmek, güncellemek için kullanılır.
 
                 int rowsAffected = cmd.ExecuteNonQuery(); // Eğer bir INSERT, UPDATE ya da DELETE gibi veritabanı üzerinde kayıt ekleyen, güncelleyen veya silen bir komut çalıştırılmışsa, ExecuteNonQuery() bu işlemin sonucunda etkilenen satır sayısını döndürür. Yani, bu satırı kullanarak kaç satırın değiştirildiğini öğrenebilirsiniz.

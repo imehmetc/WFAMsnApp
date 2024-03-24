@@ -80,6 +80,10 @@ namespace WFAMsnApp
                 if (dtable.Rows.Count > 0) // datatable'dan dönen veri var ise
                 {
                     MessageBox.Show($"hoşgeldin {kullaniciAdi} !");
+                    this.Hide();
+                    WFAMsnApp.UserForm userForm = new WFAMsnApp.UserForm();
+                    userForm.UserEmail = mail;
+                    userForm.Show();
 
                 }
                 else
